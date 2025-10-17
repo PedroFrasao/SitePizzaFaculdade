@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Pedido Confirmado";
+}
+
+<div class="text-center">
+    <h2>Pedido Confirmado!</h2>
+    <div class="alert alert-success mt-4">
+        <h4>Número do Pedido: #@ViewBag.PedidoId</h4>
+        <p>Total: <strong>R$ @ViewBag.Total.ToString("F2")</strong></p>
+    </div>
+
+    <div class="alert alert-info">
+        <h5>Instruções para Pagamento:</h5>
+        <p><strong>Chave PIX:</strong> 05117006100</p>
+        <p>Envie o comprovante para o WhatsApp: (11) 99999-9999</p>
+        <p>Seu pedido será preparado assim que confirmarmos o pagamento!</p>
+    </div>
+
+    <a href="@Url.Action("Index")" class="btn btn-primary">Voltar à Página Inicial</a>
+</div>

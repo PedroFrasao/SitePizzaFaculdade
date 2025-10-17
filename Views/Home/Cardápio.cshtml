@@ -1,0 +1,85 @@
+﻿@model List<Pizza>
+@{
+    ViewBag.Title = "Cardápio - Pizzaria Delícia";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">🍕 Nosso Cardápio</h1>
+
+    <div class="row">
+        @foreach (var pizza in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-container" style="height: 200px; overflow: hidden;">
+                        <img src="@pizza.ImagemUrl" class="card-img-top" alt="@pizza.Nome" style="height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-danger">@pizza.Nome</h5>
+                        <p class="card-text flex-grow-1">@pizza.Descricao</p>
+                        <div class="mt-auto">
+                            <p class="card-text">
+                                <strong class="h4 text-success">R$ @pizza.Preco.ToString("F2")</strong>
+                            </p>
+                            @using (Html.BeginForm("AdicionarAoCarrinho", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("pizzaId", pizza.Id)
+                                <button type="submit" class="btn btn-danger w-100">
+                                    🛒 Adicionar ao Carrinho
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Carrinho Flutuante -->
+    <div class="fixed-bottom text-end p-3">
+        <a href="@Url.Action("Carrinho")" class="btn btn-warning btn-lg position-relative">
+            🛒 Carrinho
+            @if (ViewBag.CarrinhoCount > 0)
+            {
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    @ViewBag.CarrinhoCount
+                </span>
+            }
+        </a>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="@Url.Action("Index")" class="btn btn-secondary">← Voltar para Home</a>
+        <a href="@Url.Action("Carrinho")" class="btn btn-primary">Ver Carrinho →</a>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s;
+        border: none;
+        border-radius: 15px;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+        }
+
+    .card-img-container {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .btn-danger {
+        background: linear-gradient(45deg, #dc3545, #c82333);
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+    }
+
+        .btn-danger:hover {
+            background: linear-gradient(45deg, #c82333, #a71e2a);
+            transform: scale(1.05);
+        }
+</style>
