@@ -50,7 +50,7 @@ namespace SitePizzaFaculdade.Controllers.Api
             });
 
             // 3. Define o caminho completo do arquivo
-            var caminho = @"C:\Users\pedro\Desktop\dashboard\pedidos.json";
+            var caminho = @"C:\Users\Gabriel\Desktop\ENTEC\pedidos.json";
 
             // 4. Garante que a pasta exista
             var pasta = Path.GetDirectoryName(caminho);

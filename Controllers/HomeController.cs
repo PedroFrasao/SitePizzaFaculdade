@@ -113,7 +113,7 @@ namespace SitePizzaFaculdade.Controllers
 
                 // Agora chamar a API para exportar os pedidos
                 var client = _httpClientFactory.CreateClient();
-                var url = "https://localhost:44321/api/pedidos/exportar"; // URL da sua API
+                var url = "http://localhost:5000/api/pedidos/exportar"; // URL da sua API
 
                 // Envia a requisição POST para exportar os pedidos
                 var response = await client.PostAsync(url, null);
