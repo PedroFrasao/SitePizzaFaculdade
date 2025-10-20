@@ -16,7 +16,7 @@ namespace SitePizzaFaculdade.Controllers.Api
             _context = context;
         }
 
-        // ✅ GET: api/pedidos
+        //  GET: api/pedidos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pedido>>> GetPedidos()
         {
@@ -25,7 +25,7 @@ namespace SitePizzaFaculdade.Controllers.Api
                 .ToListAsync();
         }
 
-        // ✅ GET: api/pedidos/5
+        //  GET: api/pedidos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Pedido>> GetPedido(int id)
         {
@@ -34,7 +34,7 @@ namespace SitePizzaFaculdade.Controllers.Api
             return pedido;
         }
 
-        // ✅ POST: api/pedidos/exportar
+        //  POST: api/pedidos/exportar
         [HttpPost("exportar")]
         public async Task<IActionResult> ExportarPedidos()
         {
@@ -61,7 +61,7 @@ namespace SitePizzaFaculdade.Controllers.Api
             await System.IO.File.WriteAllTextAsync(caminho, json);
 
             // 6. Retorna resposta para o frontend
-            return Ok(new { mensagem = $"✅ Pedidos exportados para: {caminho}" });
+            return Ok(new { mensagem = $" Pedidos exportados para: {caminho}" });
         }
     }
 }
